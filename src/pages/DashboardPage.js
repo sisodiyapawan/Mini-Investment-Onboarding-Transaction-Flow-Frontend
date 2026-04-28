@@ -57,11 +57,12 @@ const DashboardPage = () => {
     if (user?.bankAccount?.isLinked) {
       fetchBalance();
     }
+    setFetchAuditLogs(!fetchAuditLog);
   }, [user]);
 
   useEffect(() => {
     fetchAuditLogs();
-  }, [setFetchAuditLogs]);
+  }, [fetchAuditLog]);
 
   
 
@@ -94,6 +95,8 @@ const DashboardPage = () => {
     } catch (err) {
       setActionMessage({ type: 'error', text: 'KYC verification failed' });
     }
+
+    setFetchAuditLogs(!fetchAuditLog);
     setActionLoading(null);
   };
 
@@ -112,6 +115,7 @@ const DashboardPage = () => {
     } catch (err) {
       setActionMessage({ type: 'error', text: 'Accreditation verification failed' });
     }
+    setFetchAuditLogs(!fetchAuditLog);
     setActionLoading(null);
   };
 
@@ -137,6 +141,7 @@ const DashboardPage = () => {
     } catch (err) {
       setActionMessage({ type: 'error', text: 'Bank linking failed' });
     }
+    setFetchAuditLogs(!fetchAuditLog);
     setActionLoading(null);
   };
 
@@ -152,6 +157,7 @@ const DashboardPage = () => {
     } catch (err) {
       setActionMessage({ type: 'error', text: 'Failed to unlink bank account' });
     }
+    setFetchAuditLogs(!fetchAuditLog);
     setActionLoading(null);
   };
 
