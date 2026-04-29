@@ -47,6 +47,8 @@ const DashboardPage = () => {
     ACCREDITATION_PENDING: 'Accreditation verification is pending',
     BANK_LINK_SUCCESS: 'Bank account linked successfully',
     BANK_LINK_FAILURE: 'Failed to link bank account',
+    BANK_UNLINK_SUCCESS: 'Bank account unlinked successfully',
+    BANK_UNLINK_FAILURE: 'Failed to unlink bank account',
     INVESTMENT_SUCCESS: 'Investment successful',
     INVESTMENT_FAILURE: 'Investment failed',
     INVESTMENT_INITIATED: 'Investment has been initiated'
