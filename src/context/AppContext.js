@@ -15,6 +15,7 @@ export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [fetchAuditLog, setFetchAuditLogs] = useState(true);
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -258,6 +259,8 @@ export const AppProvider = ({ children }) => {
     setUser,
     loading,
     error,
+    fetchAuditLog,
+    setFetchAuditLogs,
     setError,
     signup,
     login,

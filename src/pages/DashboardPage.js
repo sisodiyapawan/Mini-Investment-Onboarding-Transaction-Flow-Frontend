@@ -29,12 +29,11 @@ const BankIcon = () => (
 );
 
 const DashboardPage = () => {
-  const { user, loading, initiateKyc, retryKyc, initiateAccreditation, retryAccreditation, linkBankAccount, unlinkBankAccount, getBalance, getAuditLogs } = useApp();
+  const { user, loading, initiateKyc, retryKyc, initiateAccreditation, retryAccreditation, linkBankAccount, unlinkBankAccount, getBalance, getAuditLogs, fetchAuditLog, setFetchAuditLogs } = useApp();
   const [balance, setBalance] = useState(null);
   const [auditLogs, setAuditLogs] = useState([]);
   const [actionLoading, setActionLoading] = useState(null);
   const [actionMessage, setActionMessage] = useState(null);
-  const [fetchAuditLog, setFetchAuditLogs] = useState(true);
 
   const statusDescriptions = {
     USER_SIGNUP: 'User has signed up',
@@ -362,7 +361,7 @@ const DashboardPage = () => {
 };
 
 const InvestmentForm = ({ balance }) => {
-  const { makeInvestment, getInvestments } = useApp();
+  const { makeInvestment, getInvestments, setFetchAuditLogs } = useApp();
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
@@ -375,6 +374,7 @@ const InvestmentForm = ({ balance }) => {
 
   const fetchInvestments = async () => {
     const result = await getInvestments();
+    setFetchAuditLogs(prev => !prev);
     if (result?.success) {
       setInvestments(result.data.investments || []);
     }
